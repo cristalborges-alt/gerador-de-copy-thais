@@ -1,1 +1,0 @@
-# gerador-de-copy-thais
