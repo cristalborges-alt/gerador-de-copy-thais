@@ -478,7 +478,7 @@ async function sugerirTemas(){
   c.style.display='block';l.innerHTML='';
   document.getElementById('sug-loading').style.display='block';
   try{
-    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,{method:"POST",headers:{"Content-Type":"application/json"},
+    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,{method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({contents:[{parts:[{text:`Sugira 6 temas de Reels para a Dra. Thais Colodetti, reumatologista, usando a estrutura "${estSel.nome}" (${estSel.quando}). Público: mulheres com dor crônica ou doenças reumáticas. Responda APENAS com array JSON de strings, sem markdown. Exemplo: ["tema 1","tema 2"]`}]}]})});
     const d=await res.json();
     const txt=d.candidates?.[0]?.content?.parts?.[0]?.text||'[]';
@@ -543,7 +543,7 @@ ${etapas}
 Copy completa, fluida, pronta para gravação. Tom: acolhedor, direto, educativo, humano. Sem travessões. Máximo 200 palavras.`;
   try{
     const promptCompleto=system+'\n\n'+user;
-    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,{method:"POST",headers:{"Content-Type":"application/json"},
+    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,{method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({contents:[{parts:[{text:promptCompleto}]}],generationConfig:{maxOutputTokens:1000}})});
     const data=await res.json();
     const txt=data.candidates?.[0]?.content?.parts?.[0]?.text||'Erro ao gerar. Tente novamente.';
